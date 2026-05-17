@@ -1,0 +1,87 @@
+.recommendation-controls {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 1fr)) auto;
+  gap: 0.75rem;
+  align-items: end;
+  margin: 1.25rem 0;
+  padding: 1rem;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  background: #151515;
+}
+
+.recommendation-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.recommendation-controls span {
+  color: #999;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.recommendation-controls select,
+.recommendation-controls input {
+  width: 100%;
+  min-height: 42px;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #0f0f0f;
+  color: #fff;
+  font: inherit;
+  outline: none;
+}
+
+.recommendation-controls select:focus,
+.recommendation-controls input:focus {
+  border-color: #36c5a8;
+}
+
+.control-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.control-actions button {
+  min-height: 42px;
+  padding: 0 1rem;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.suggest-btn {
+  background: #36c5a8;
+}
+
+.reset-btn {
+  background: #333;
+}
+
+@media (max-width: 900px) {
+  .recommendation-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .control-actions {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 520px) {
+  .recommendation-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .control-actions {
+    flex-direction: column;
+  }
+}

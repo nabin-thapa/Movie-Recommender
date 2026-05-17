@@ -1,0 +1,5 @@
+
+> movie-recommender-server@1.0.0 dev
+> node --watch index.js
+
+Server running on http://localhost:3000

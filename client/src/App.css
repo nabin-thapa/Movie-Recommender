@@ -1,0 +1,104 @@
+.app {
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background: #0d0d0d;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #f5c451 0%, #36c5a8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.provider-status {
+  flex-shrink: 0;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #aaa;
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.provider-status.live {
+  border-color: rgba(54, 197, 168, 0.5);
+  color: #36c5a8;
+}
+
+.provider-status.fallback {
+  border-color: rgba(245, 196, 81, 0.5);
+  color: #f5c451;
+}
+
+.main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.content-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2rem 0 1.5rem;
+}
+
+.content-header h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.movie-count {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.error-message {
+  margin-bottom: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(245, 196, 81, 0.4);
+  border-radius: 8px;
+  background: rgba(245, 196, 81, 0.08);
+  color: #f5c451;
+}
+
+.loading {
+  text-align: center;
+  padding: 4rem;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+@media (max-width: 760px) {
+  .header {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .main {
+    padding: 1rem;
+  }
+
+  .content-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+}
