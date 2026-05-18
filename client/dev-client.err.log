@@ -1,0 +1,192 @@
+[2m2:01:58 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/status[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:01:58 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/industries[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:01:58 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/genres?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:01:58 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/popular?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:01:58 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/status[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:01:58 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/industries[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:01:58 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/genres?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:01:58 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/popular?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:02:16 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/status[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:02:16 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/industries[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:02:16 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/genres?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:02:16 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/popular?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:02:16 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/genres?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:02:16 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/popular?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:26:43 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/status[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:26:43 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/industries[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:26:43 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/genres?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:26:43 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/popular?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:26:43 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/status[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:26:43 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/industries[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:26:43 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/genres?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:26:43 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/popular?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:03 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/status[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:03 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/industries[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:03 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/genres?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:03 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/popular?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:03 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/genres?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:03 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/popular?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:07 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/genres?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:07 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/popular?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:07 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/genres?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:07 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/popular?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:07 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/status[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:07 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/industries[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:31 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/status[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:31 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/industries[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:31 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/genres?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:31 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/popular?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:31 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/status[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:31 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/industries[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:31 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/genres?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:31 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/popular?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:47 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/status[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:47 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/industries[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:47 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/genres?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:47 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/popular?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:47 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/industries[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)
+[2m2:27:47 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/genres?industry=all[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1712:7)

@@ -7,6 +7,14 @@ const SIMKL_FEEDS = [
 const CACHE_TTL = 1000 * 60 * 30;
 const USER_AGENT = 'movie-recommender/1.0 (local project)';
 
+// Map our app's industry tabs to Simkl country codes.
+// Simkl tags items with a 2-letter country code (e.g. "us", "in", "np").
+const INDUSTRY_COUNTRIES = {
+  hollywood: ['us', 'gb', 'ca', 'au', 'ie', 'nz'],
+  bollywood: ['in'],
+  nepali: ['np'],
+};
+
 const GENRE_ALIASES = {
   'action': 28,
   'adventure': 12,
@@ -108,8 +116,17 @@ function normalizeMovie(item) {
     provider_url: item.url ? `https://simkl.com${item.url}` : '',
     imdb_id: item.ids?.imdb || '',
     tmdb_id: item.ids?.tmdb || '',
+    country: String(item.country || '').toLowerCase(),
     source: 'simkl',
   };
+}
+
+function filterByIndustry(movies, industry) {
+  if (!industry || industry === 'all') return movies;
+  const allowed = INDUSTRY_COUNTRIES[industry];
+  if (!allowed) return movies;
+  const allowedSet = new Set(allowed);
+  return movies.filter((movie) => allowedSet.has(movie.country));
 }
 
 function genreToId(genre) {
@@ -184,13 +201,13 @@ function paginate(movies, page = 1) {
   };
 }
 
-export async function simklGetPopularMovies(page = 1) {
-  const movies = await fetchSimklMovies();
+export async function simklGetPopularMovies(page = 1, industry = 'all') {
+  const movies = filterByIndustry(await fetchSimklMovies(), industry);
   return paginate(sortMovies(movies), page);
 }
 
-export async function simklSearchMovies(query, page = 1) {
-  const movies = await fetchSimklMovies();
+export async function simklSearchMovies(query, page = 1, industry = 'all') {
+  const movies = filterByIndustry(await fetchSimklMovies(), industry);
   const lowerQuery = String(query || '').toLowerCase();
   const filtered = movies.filter((movie) =>
     `${movie.title} ${movie.overview}`.toLowerCase().includes(lowerQuery)
@@ -199,8 +216,8 @@ export async function simklSearchMovies(query, page = 1) {
   return paginate(sortMovies(filtered), page);
 }
 
-export async function simklGetGenres() {
-  const movies = await fetchSimklMovies();
+export async function simklGetGenres(industry = 'all') {
+  const movies = filterByIndustry(await fetchSimklMovies(), industry);
   const genres = new Map();
 
   movies.forEach((movie) => {
@@ -233,7 +250,8 @@ export async function simklGetMovieDetails(id) {
 }
 
 export async function simklGetRecommendations(genreIds = [], page = 1, options = {}) {
-  const movies = await fetchSimklMovies();
+  const industry = options.industry || 'all';
+  const movies = filterByIndustry(await fetchSimklMovies(), industry);
   const seedMovie = options.movieId
     ? movies.find((movie) => movie.id === Number(options.movieId))
     : null;

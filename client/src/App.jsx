@@ -16,12 +16,15 @@ function App() {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [loading, setLoading] = useState(false);
   const [view, setView] = useState('recommendations');
-  const [status, setStatus] = useState(null);
+  const [industry, setIndustry] = useState('all');
+
+  const [resultSource, setResultSource] = useState(null);
   const [error, setError] = useState('');
   const [minRating, setMinRating] = useState('0');
   const [yearFrom, setYearFrom] = useState('');
   const [yearTo, setYearTo] = useState('');
   const [sortBy, setSortBy] = useState(DEFAULT_SORT);
+  const [industries, setIndustries] = useState([]);
 
   const hasActiveFilters = useMemo(
     () =>
@@ -48,30 +51,43 @@ function App() {
 
   const fetchStatus = useCallback(async () => {
     try {
-      const data = await fetchJson(`${API_BASE}/status`);
-      setStatus(data);
+      // Fire-and-forget: warms server caches and surfaces a startup error if the
+      // backend is unreachable. The actual badge in the header reflects each
+      // response's source, not this global status.
+      await fetchJson(`${API_BASE}/status`);
     } catch (err) {
       console.error('Error fetching API status:', err);
     }
   }, [fetchJson]);
 
+  const fetchIndustries = useCallback(async () => {
+    try {
+      const data = await fetchJson(`${API_BASE}/industries`);
+      setIndustries(Array.isArray(data) && data.length > 0 ? data : ['all', 'hollywood', 'bollywood', 'nepali']);
+    } catch (err) {
+      console.error('Error fetching industries:', err);
+      setIndustries(['all', 'hollywood', 'bollywood', 'nepali']);
+    }
+  }, [fetchJson]);
+
   const fetchGenres = useCallback(async () => {
     try {
-      const data = await fetchJson(`${API_BASE}/genres`);
+      const data = await fetchJson(`${API_BASE}/genres?industry=${industry}`);
       setGenres(Array.isArray(data) ? data : []);
     } catch (err) {
       setError(err.message);
       console.error('Error fetching genres:', err);
     }
-  }, [fetchJson]);
+  }, [fetchJson, industry]);
 
   const fetchPopularMovies = useCallback(async () => {
     setLoading(true);
     setError('');
 
     try {
-      const data = await fetchJson(`${API_BASE}/popular`);
+      const data = await fetchJson(`${API_BASE}/popular?industry=${industry}`);
       setMovies(data.results || []);
+      setResultSource(data.source || null);
       setView('popular');
     } catch (err) {
       setError(err.message);
@@ -79,7 +95,7 @@ function App() {
     } finally {
       setLoading(false);
     }
-  }, [fetchJson]);
+  }, [fetchJson, industry]);
 
   const fetchRecommendations = useCallback(
     async (genreIds = selectedGenres) => {
@@ -92,12 +108,14 @@ function App() {
       if (yearFrom.trim()) params.set('yearFrom', yearFrom.trim());
       if (yearTo.trim()) params.set('yearTo', yearTo.trim());
       if (sortBy) params.set('sortBy', sortBy);
+      if (industry) params.set('industry', industry);
 
       const query = params.toString();
 
       try {
         const data = await fetchJson(`${API_BASE}/recommendations${query ? `?${query}` : ''}`);
         setMovies(data.results || []);
+        setResultSource(data.source || null);
         setView('recommendations');
       } catch (err) {
         setError(err.message);
@@ -106,7 +124,7 @@ function App() {
         setLoading(false);
       }
     },
-    [fetchJson, minRating, selectedGenres, sortBy, yearFrom, yearTo]
+    [fetchJson, minRating, selectedGenres, sortBy, yearFrom, yearTo, industry]
   );
 
   const fetchMovieRecommendations = useCallback(
@@ -120,10 +138,12 @@ function App() {
       if (minRating !== '0') params.set('minRating', minRating);
       if (yearFrom.trim()) params.set('yearFrom', yearFrom.trim());
       if (yearTo.trim()) params.set('yearTo', yearTo.trim());
+      if (industry) params.set('industry', industry);
 
       try {
         const data = await fetchJson(`${API_BASE}/recommendations?${params}`);
         setMovies(data.results || []);
+        setResultSource(data.source || null);
         setView('recommendations');
       } catch (err) {
         setError(err.message);
@@ -132,20 +152,41 @@ function App() {
         setLoading(false);
       }
     },
-    [fetchJson, minRating, yearFrom, yearTo]
+    [fetchJson, minRating, yearFrom, yearTo, industry]
   );
 
   useEffect(() => {
     fetchStatus();
+    fetchIndustries();
+  }, [fetchStatus, fetchIndustries]);
+
+  // When industry changes, refetch genres + popular. Filter resets happen
+  // synchronously in handleIndustryChange so they're already cleared by the
+  // time these effects run, avoiding a race with the auto-recommendations
+  // effect below.
+  useEffect(() => {
     fetchGenres();
     fetchPopularMovies();
-  }, [fetchGenres, fetchPopularMovies, fetchStatus]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [industry]);
 
   useEffect(() => {
     if (hasActiveFilters) {
       fetchRecommendations(selectedGenres);
     }
-  }, [fetchRecommendations, hasActiveFilters, selectedGenres]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hasActiveFilters, selectedGenres, minRating, yearFrom, yearTo, sortBy]);
+
+  const handleIndustryChange = (nextIndustry) => {
+    if (nextIndustry === industry) return;
+    setSelectedGenres([]);
+    setMinRating('0');
+    setYearFrom('');
+    setYearTo('');
+    setSortBy(DEFAULT_SORT);
+    setView('popular');
+    setIndustry(nextIndustry);
+  };
 
   const handleSearch = async (query) => {
     if (!query.trim()) {
@@ -157,8 +198,9 @@ function App() {
     setError('');
 
     try {
-      const data = await fetchJson(`${API_BASE}/search?query=${encodeURIComponent(query)}`);
+      const data = await fetchJson(`${API_BASE}/search?query=${encodeURIComponent(query)}&industry=${industry}`);
       setMovies(data.results || []);
+      setResultSource(data.source || null);
       setView('search');
     } catch (err) {
       setError(err.message);
@@ -189,10 +231,32 @@ function App() {
     <div className="app">
       <header className="header">
         <h1 className="logo" onClick={handleClearFilters}>MovieRecommender</h1>
+        <div className="industry-tabs">
+          {industries.map((ind) => (
+            <button
+              key={ind}
+              className={`tab ${ind === industry ? 'active' : ''}`}
+              onClick={() => handleIndustryChange(ind)}
+            >
+              {ind.charAt(0).toUpperCase() + ind.slice(1)}
+            </button>
+          ))}
+        </div>
         <SearchBar onSearch={handleSearch} />
-        {status && (
-          <div className={`provider-status ${status.live ? 'live' : 'fallback'}`}>
-            {status.live ? `Live ${status.provider.toUpperCase()}` : 'Demo data'}
+        {resultSource && (
+          <div
+            className={`provider-status ${
+              resultSource === 'fallback' ? 'fallback' : 'live'
+            }`}
+            title={
+              resultSource === 'fallback'
+                ? 'Showing built-in fallback data'
+                : `Showing live data from ${resultSource.toUpperCase()}`
+            }
+          >
+            {resultSource === 'fallback'
+              ? 'Demo data'
+              : `Live ${resultSource.toUpperCase()}`}
           </div>
         )}
       </header>
@@ -239,6 +303,7 @@ function App() {
       {selectedMovie && (
         <MovieModal
           movie={selectedMovie}
+          industry={industry}
           onClose={() => setSelectedMovie(null)}
           onRecommend={fetchMovieRecommendations}
         />

@@ -10,31 +10,39 @@ function getImageSrc(path, base) {
   return `${base}${path}`;
 }
 
-function MovieModal({ movie, onClose, onRecommend }) {
+function MovieModal({ movie, onClose, onRecommend, industry }) {
   const [details, setDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [posterError, setPosterError] = useState(false);
   const [backdropError, setBackdropError] = useState(false);
 
   useEffect(() => {
+    let cancelled = false;
     const fetchDetails = async () => {
       setLoading(true);
       setDetails(null);
       setPosterError(false);
       setBackdropError(false);
       try {
-        const source = movie.source ? `?source=${encodeURIComponent(movie.source)}` : '';
-        const res = await fetch(`/api/movie/${movie.id}${source}`);
-        const data = await res.json();
+        const params = new URLSearchParams();
+        if (movie.source) params.set('source', movie.source);
+        if (industry) params.set('industry', industry);
+        const qs = params.toString();
+        const res = await fetch(`/api/movie/${movie.id}${qs ? `?${qs}` : ''}`);
+        const data = await res.json().catch(() => ({}));
         if (!res.ok) throw new Error(data.error || 'Failed to load movie details');
-        setDetails(data);
+        if (!cancelled) setDetails(data);
       } catch (error) {
         console.error('Error fetching movie details:', error);
+      } finally {
+        if (!cancelled) setLoading(false);
       }
-      setLoading(false);
     };
     fetchDetails();
-  }, [movie.id, movie.source]);
+    return () => {
+      cancelled = true;
+    };
+  }, [movie.id, movie.source, industry]);
 
   return (
     <div className="modal-overlay" onClick={onClose}>
